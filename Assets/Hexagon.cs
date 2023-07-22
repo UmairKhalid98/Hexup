@@ -16,7 +16,7 @@ public class Hexagon : MonoBehaviour
     float radius = 10f;
     private bool started = false;
     public bool gameOver = false;
-    public GameObject ball;
+    public GameObject ball, bgMusic;
 
     //Touch Control
     private Vector3 touchPosition;
@@ -27,8 +27,10 @@ public class Hexagon : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Starts playing if the text "play" is no longer on the screen
         if (!play.enabled && !started)
         {
+            bgMusic.GetComponent<AudioSource>().Play();
             StartCoroutine("Spawn");
             started = true;
         }
