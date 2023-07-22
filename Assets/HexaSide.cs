@@ -7,8 +7,7 @@ public class HexaSide : MonoBehaviour
 {
     private Color32 ballColor;
     private Color32 selfColor;
-
-
+    private GameObject deathSound;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,7 +18,8 @@ public class HexaSide : MonoBehaviour
 
         if (!ballColor.Equals(selfColor))
         {
-  
+            GameObject.Find("DeathSoundEffect").GetComponent<AudioSource>().Play();
+            //deathSound.GetComponent<AudioSource>().Play();
             Destroy(other.gameObject);
             GameObject.Find("Hexagon").GetComponent<Hexagon>().gameOver = true;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
